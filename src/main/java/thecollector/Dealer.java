@@ -38,7 +38,15 @@ public class Dealer implements Serializable {
      * Generates a new list of cars to be sold.
      */
     public void generateCarListings() {
-        // TODO: implement
+        listings = new TreeMap<>();
+        for (int i = 0; i < this.numberOfCars; i++) {
+            listings.put(i, generateSingleListing());
+        }
+    }
+
+    public Car generateSingleListing() {
+        // TODO: add more cars
+        return new Car("Nissom", "Moony", 20000_00);
     }
 
     /**
