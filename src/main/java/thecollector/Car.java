@@ -12,9 +12,10 @@ public class Car {
 
     /**
      * Constructor for a car.
-     * @param brand Brand of the car
+     *
+     * @param brand     Brand of the car
      * @param modelName Model name of the car
-     * @param value Value of the car
+     * @param value     Value of the car
      */
     public Car(String brand, String modelName, int value) {
         this.brand = brand;
@@ -29,6 +30,6 @@ public class Car {
      */
     @Override
     public String toString() {
-        return String.format("%s %s (Est. value: %d)", brand, modelName, value);
+        return String.format("%s %s (Est. value: %s)", brand, modelName, Utilities.formatMoney(value));
     }
 }
