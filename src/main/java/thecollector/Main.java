@@ -2,6 +2,11 @@ package thecollector;
 
 import java.io.IOException;
 
+/**
+ * This class is the entry-point for the game to run.
+ *
+ * @author Ivan Wong
+ */
 public class Main {
     public static void main(String[] args) throws IOException {
         try {
