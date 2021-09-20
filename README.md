@@ -32,6 +32,6 @@ The Collector is a planned business / simulation single-player game. Players wil
 ## Acknowledgements
 Portions of the codebase have been reused from the following sources:
 
-Reused from [Datsabk](https://mkyong.com/java/how-to-read-and-write-java-object-to-a-file/) with minor modifications
-1. Storage::readSave()
-2. Storage::writeSave()
+### Reused from [Datsabk](https://mkyong.com/java/how-to-read-and-write-java-object-to-a-file/) with minor modifications
+1. `Storage::readSave()`
+2. `Storage::writeSave()`
