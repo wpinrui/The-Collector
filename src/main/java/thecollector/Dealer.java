@@ -53,6 +53,11 @@ public class Dealer implements Serializable {
         }
     }
 
+    /**
+     * Generates a single car listing.
+     *
+     * @return A car to be listed by the dealer
+     */
     public Car generateSingleListing() {
         // TODO: add more cars
         return new Car("Nissom", "Moony", 20000_00);

@@ -8,6 +8,12 @@ import java.io.IOException;
  * @author Ivan Wong
  */
 public class Main {
+    /**
+     * Loads the game and starts.
+     *
+     * @param args Commandline arguments
+     * @throws IOException if the game fails to save while being played
+     */
     public static void main(String[] args) throws IOException {
         try {
             Game game = Storage.readSave();

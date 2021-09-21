@@ -6,9 +6,9 @@ package thecollector;
  * @author Ivan Wong
  */
 public class Car {
-    String brand;
-    String modelName;
-    int value;
+    private String brand;
+    private String modelName;
+    private int value;
 
     /**
      * Constructor for a car.
