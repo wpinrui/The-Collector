@@ -55,12 +55,13 @@ public class Garage implements Serializable {
      *
      * @return String representation of cars in garage
      */
-    public String listAllCars() {
+    @Override
+    public String toString() {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < cars.size(); i++) {
             output.append(cars.get(i));
             output.append("\n");
         }
-        return String.format("%s\n%s", Ui.formatGarageListString(this), output);
+        return String.format("%s:\n%s", Ui.formatGarageListString(this), output);
     }
 }

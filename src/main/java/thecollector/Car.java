@@ -32,4 +32,15 @@ public class Car {
     public String toString() {
         return String.format("%s %s (Est. value: %s)", brand, modelName, Utilities.formatMoney(value));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Car)) {
+            return false;
+        }
+        Car c = (Car) o;
+        return brand.equals(c.brand)
+                && modelName.equals(c.modelName)
+                && value == c.value;
+    }
 }

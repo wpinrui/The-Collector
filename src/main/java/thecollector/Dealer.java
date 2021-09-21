@@ -26,6 +26,15 @@ public class Dealer implements Serializable {
     }
 
     /**
+     * Retrieves the name of the dealer.
+     *
+     * @return The dealer name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
      * Retrieve the listings from the dealer
      *
      * @return listings
@@ -50,11 +59,13 @@ public class Dealer implements Serializable {
     }
 
     /**
-     * Remove a car from the listings, perhaps because it has been sold
-     * @param treeKey
+     * Remove a car from the listings, perhaps because it has been sold.
+     * Returns the car.
+     *
+     * @param treeKey Index of the car to remove
      */
-    public void removeFromListings(int treeKey) {
-        // TODO: implement
+    public Car removeFromListings(int treeKey) {
+        return listings.remove(treeKey);
     }
 
     /**
@@ -63,6 +74,11 @@ public class Dealer implements Serializable {
      */
     @Override
     public String toString() {
-        return this.name;
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < listings.size(); i++) {
+            output.append(listings.get(i));
+            output.append("\n");
+        }
+        return String.format("%s:\n%s", Ui.formatDealerListingsString(this), output);
     }
 }

@@ -32,4 +32,8 @@ public class Ui {
             return promptPlayerName();
         }
     }
+
+    public static String formatDealerListingsString(Dealer dealer) {
+        return String.format("%s's listings", dealer.getName());
+    }
 }
