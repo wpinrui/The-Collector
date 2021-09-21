@@ -10,19 +10,18 @@ import java.io.Serializable;
 public class Player implements Serializable {
     private final String name;
     private int money;
-    private Garage garage;
+    private Location location;
 
     /**
-     * Constructor for the player class.
+     * Constructor for the player class. The player's starting location is their garage.
      *
      * @param name The name of the player
      * @param money The amount of money that the player has
      * @param garage The garage that the player owns
      */
-    public Player(String name, int money, Garage garage) {
+    public Player(String name, int money) {
         this.name = name;
         this.money = money;
-        this.garage = garage;
     }
 
     /**
@@ -61,12 +60,11 @@ public class Player implements Serializable {
         return money;
     }
 
-    /**
-     * Retrieves the garage belonging to the player
-     *
-     * @return Garage belonging to player
-     */
-    public Garage getGarage() {
-        return garage;
+
+    public void setLocation(Location l) {
+        location = l;
+    }
+    public Location getLocation() {
+        return location;
     }
 }

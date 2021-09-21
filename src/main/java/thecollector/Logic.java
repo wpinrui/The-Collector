@@ -1,10 +1,11 @@
 package thecollector;
 
-import static thecollector.Ui.display;
-
 public class Logic {
     public static void handleCash(Game game) {
         int money = game.getPlayer().getMoney();
-        display(formatCashMessage(money));
+        Ui.display(Ui.formatCashMessage(money));
+    }
+    public static void handleShop(Game game) {
+        game.getPlayer().setLocation(game.getDealers()[0]);
     }
 }

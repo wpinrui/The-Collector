@@ -14,12 +14,11 @@ public class Ui {
     public static final String ARGS_SELL = "Sell command expected an integer car index.";
 
     /**
-     * Returns a string that is shown before the car list when the player views the garage
-     * @param garage The garage being viewed
-     * @return The string representing the garage
+     * Shows a message to the player.
+     * @param message The message to be shown.
      */
-    public static String formatGarageListString(Garage garage) {
-        return String.format("Cars in %s", garage.getName());
+    public static void display(String message) {
+        System.out.println(message);
     }
 
     /**
@@ -37,7 +36,11 @@ public class Ui {
         }
     }
 
-    public static String formatDealerListingsString(Dealer dealer) {
-        return String.format("%s's listings", dealer.getName());
+    public static String formatCashMessage(int money) {
+        return String.format("Current balance: %s", Utilities.formatMoney(money));
+    }
+
+    public static Object formatCarsListString(Location location) {
+        return String.format("%s\nCars: \n", location.getName());
     }
 }

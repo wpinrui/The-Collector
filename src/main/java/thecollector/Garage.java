@@ -5,13 +5,11 @@ import java.util.TreeMap;
 
 /**
  * This class represents a garage, which has a name and consists of cars owned by the player.
+ * It is a subclass of Location.
  *
  * @author Ivan Wong
  */
-public class Garage implements Serializable {
-    private String name;
-    private TreeMap<Integer, Car> cars;
-
+public class Garage extends Location implements Serializable {
     /**
      * Class constructor for Garage.
      *
@@ -19,17 +17,7 @@ public class Garage implements Serializable {
      * @param cars A TreeMap of cars owned by the player
      */
     public Garage(String name, TreeMap<Integer, Car> cars) {
-        this.name = name;
-        this.cars = cars;
-    }
-
-    /**
-     * Retrieves the name of the garage.
-     *
-     * @return The garage name
-     */
-    public String getName() {
-        return this.name;
+        super(name, cars);
     }
 
     /**
@@ -48,20 +36,5 @@ public class Garage implements Serializable {
      */
     public Car removeCar(int key) {
         return cars.remove(key);
-    }
-
-    /**
-     * Returns a string representation of all the cars in the garage.
-     *
-     * @return String representation of cars in garage
-     */
-    @Override
-    public String toString() {
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < cars.size(); i++) {
-            output.append(cars.get(i));
-            output.append("\n");
-        }
-        return String.format("%s:\n%s", Ui.formatGarageListString(this), output);
     }
 }

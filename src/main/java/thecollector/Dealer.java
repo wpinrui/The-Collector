@@ -5,12 +5,11 @@ import java.util.TreeMap;
 
 /**
  * This class encapsulates a car dealer's characteristics and behaviour.
+ * It is a subclass of Location.
  *
  * @author Ivan Wong
  */
-public class Dealer implements Serializable {
-    private TreeMap<Integer, Car> listings;
-    private final String name;
+public class Dealer extends Location implements Serializable {
     private final int numberOfCars;
 
     /**
@@ -20,18 +19,9 @@ public class Dealer implements Serializable {
      * @param numberOfCars Number of cars available from the dealer each month
      */
     public Dealer(String name, int numberOfCars) {
-        this.name = name;
+        super(name, new TreeMap<Integer, Car>());
         this.numberOfCars = numberOfCars;
         generateCarListings();
-    }
-
-    /**
-     * Retrieves the name of the dealer.
-     *
-     * @return The dealer name
-     */
-    public String getName() {
-        return this.name;
     }
 
     /**
@@ -40,16 +30,15 @@ public class Dealer implements Serializable {
      * @return listings
      */
     public TreeMap<Integer, Car> getCarListings() {
-        return listings;
+        return cars;
     }
 
     /**
      * Generates a new list of cars to be sold.
      */
     public void generateCarListings() {
-        listings = new TreeMap<>();
         for (int i = 0; i < this.numberOfCars; i++) {
-            listings.put(i, generateSingleListing());
+            cars.put(i, generateSingleListing());
         }
     }
 
@@ -70,20 +59,6 @@ public class Dealer implements Serializable {
      * @param treeKey Index of the car to remove
      */
     public Car removeFromListings(int treeKey) {
-        return listings.remove(treeKey);
-    }
-
-    /**
-     * Return the name of the car dealer.
-     * @return Name of dealer
-     */
-    @Override
-    public String toString() {
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < listings.size(); i++) {
-            output.append(listings.get(i));
-            output.append("\n");
-        }
-        return String.format("%s:\n%s", Ui.formatDealerListingsString(this), output);
+        return cars.remove(treeKey);
     }
 }
