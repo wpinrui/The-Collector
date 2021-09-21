@@ -6,6 +6,13 @@ package thecollector;
  * @author Ivan Wong
  */
 public class Utilities {
+    /**
+     * Takes an integer number of cents and converts it to a readable currency string.
+     * Example: -1000000 cents becomes "-$10,000.00".
+     *
+     * @param cents Integer number of cents
+     * @return Formatted currency string
+     */
     public static String formatMoney(int cents) {
         int positiveCents = Math.abs(cents);
         String decimals = positiveCents % 100 >= 10
@@ -17,15 +24,23 @@ public class Utilities {
                 : String.format("-$%s.%s", dollars, decimals);
     }
 
+    /**
+     * Takes a string containing an integer and inserts commas for each block of 3 digits,
+     * starting from the back.
+     * Example: "12345" becomes "12,345"
+     *
+     * @param dollars String containing integer
+     * @return String with commas
+     */
     public static String addCommas(String dollars) {
         int inputIndex = dollars.length() - 1;
-        int digit_count = 0;
+        int digitCount = 0;
         StringBuilder output = new StringBuilder();
         while (inputIndex >= 0) {
             output.insert(0, dollars.charAt(inputIndex));
-            digit_count++;
+            digitCount++;
             inputIndex--;
-            if (digit_count % 3 == 0 && inputIndex >= 0) {
+            if (digitCount % 3 == 0 && inputIndex >= 0) {
                 output.insert(0, ",");
             }
         }

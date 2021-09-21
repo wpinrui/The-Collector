@@ -26,6 +26,15 @@ public class Dealer implements Serializable {
     }
 
     /**
+     * Retrieves the name of the dealer.
+     *
+     * @return The dealer name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
      * Retrieve the listings from the dealer
      *
      * @return listings
@@ -38,15 +47,30 @@ public class Dealer implements Serializable {
      * Generates a new list of cars to be sold.
      */
     public void generateCarListings() {
-        // TODO: implement
+        listings = new TreeMap<>();
+        for (int i = 0; i < this.numberOfCars; i++) {
+            listings.put(i, generateSingleListing());
+        }
     }
 
     /**
-     * Remove a car from the listings, perhaps because it has been sold
-     * @param treeKey
+     * Generates a single car listing.
+     *
+     * @return A car to be listed by the dealer
      */
-    public void removeFromListings(int treeKey) {
-        // TODO: implement
+    public Car generateSingleListing() {
+        // TODO: add more cars
+        return new Car("Nissom", "Moony", 20000_00);
+    }
+
+    /**
+     * Remove a car from the listings, perhaps because it has been sold.
+     * Returns the car.
+     *
+     * @param treeKey Index of the car to remove
+     */
+    public Car removeFromListings(int treeKey) {
+        return listings.remove(treeKey);
     }
 
     /**
@@ -55,6 +79,11 @@ public class Dealer implements Serializable {
      */
     @Override
     public String toString() {
-        return this.name;
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < listings.size(); i++) {
+            output.append(listings.get(i));
+            output.append("\n");
+        }
+        return String.format("%s:\n%s", Ui.formatDealerListingsString(this), output);
     }
 }

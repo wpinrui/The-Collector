@@ -35,3 +35,7 @@ Portions of the codebase have been reused from the following sources:
 ### Reused from [Datsabk](https://mkyong.com/java/how-to-read-and-write-java-object-to-a-file/) with minor modifications
 1. `Storage::readSave()`
 2. `Storage::writeSave()`
+
+### Reused from [SE-EDU](https://github.com/se-edu/addressbook-level3/tree/master/config/checkstyle)
+1. `config\checkstyle\checkstyle.xml`
+2. `config\checkstyle\suppressions.xml`

@@ -9,4 +9,9 @@ public class CarTest {
         assertEquals(new Car("Faroli", "459 Francais", 250000_00).toString(),
                 "Faroli 459 Francais (Est. value: $250,000.00)");
     }
+    @Test
+    public void equalsTest() {
+        assertEquals(new Car("Faroli", "459 Francais", 250000_00),
+                new Car("Faroli", "459 Francais", 250000_00));
+    }
 }

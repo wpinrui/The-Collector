@@ -6,9 +6,9 @@ package thecollector;
  * @author Ivan Wong
  */
 public class Car {
-    String brand;
-    String modelName;
-    int value;
+    private String brand;
+    private String modelName;
+    private int value;
 
     /**
      * Constructor for a car.
@@ -31,5 +31,16 @@ public class Car {
     @Override
     public String toString() {
         return String.format("%s %s (Est. value: %s)", brand, modelName, Utilities.formatMoney(value));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Car)) {
+            return false;
+        }
+        Car c = (Car) o;
+        return brand.equals(c.brand)
+                && modelName.equals(c.modelName)
+                && value == c.value;
     }
 }
