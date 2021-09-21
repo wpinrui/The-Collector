@@ -53,6 +53,15 @@ public class Player implements Serializable {
     }
 
     /**
+     * Returns the amount of money that the player has.
+     *
+     * @return Amount of money in cents
+     */
+    public int getMoney() {
+        return money;
+    }
+
+    /**
      * Retrieves the garage belonging to the player
      *
      * @return Garage belonging to player

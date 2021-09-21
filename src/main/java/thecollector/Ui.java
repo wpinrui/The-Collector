@@ -9,6 +9,10 @@ import java.util.Scanner;
  * @author Ivan Wong
  */
 public class Ui {
+    public static final String ARGS_VIEW = "View command expected an integer car index.";
+    public static final String ARGS_BUY = "Buy command expected an integer listing number.";
+    public static final String ARGS_SELL = "Sell command expected an integer car index.";
+
     /**
      * Returns a string that is shown before the car list when the player views the garage
      * @param garage The garage being viewed
