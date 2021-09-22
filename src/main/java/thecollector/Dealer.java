@@ -1,7 +1,7 @@
 package thecollector;
 
 import java.io.Serializable;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 /**
  * This class encapsulates a car dealer's characteristics and behaviour.
@@ -10,8 +10,7 @@ import java.util.TreeMap;
  * @author Ivan Wong
  */
 public class Dealer extends Location implements Serializable {
-    private final int numberOfCars;
-
+    private int numberOfCars;
     /**
      * Constructor for a car dealer.
      *
@@ -19,9 +18,17 @@ public class Dealer extends Location implements Serializable {
      * @param numberOfCars Number of cars available from the dealer each month
      */
     public Dealer(String name, int numberOfCars) {
-        super(name, new TreeMap<Integer, Car>());
+        super(name, new ArrayList<>());
         this.numberOfCars = numberOfCars;
-        generateCarListings();
+        generateCarListings(numberOfCars);
+    }
+
+    public int getNumberOfCars() {
+        return numberOfCars;
+    }
+
+    public void setNumberOfCars(int numberOfCars) {
+        this.numberOfCars = numberOfCars;
     }
 
     /**
@@ -29,16 +36,17 @@ public class Dealer extends Location implements Serializable {
      *
      * @return listings
      */
-    public TreeMap<Integer, Car> getCarListings() {
+    public ArrayList<Car> getCarListings() {
         return cars;
     }
 
     /**
      * Generates a new list of cars to be sold.
      */
-    public void generateCarListings() {
-        for (int i = 0; i < this.numberOfCars; i++) {
-            cars.put(i, generateSingleListing());
+    public void generateCarListings(int numberOfCars) {
+        cars = new ArrayList<>();
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(generateSingleListing());
         }
     }
 
@@ -56,9 +64,13 @@ public class Dealer extends Location implements Serializable {
      * Remove a car from the listings, perhaps because it has been sold.
      * Returns the car.
      *
-     * @param treeKey Index of the car to remove
+     * @param index Index of the car to remove
      */
-    public Car removeFromListings(int treeKey) {
-        return cars.remove(treeKey);
+    public Car removeFromListings(int index) {
+        return cars.remove(index);
+    }
+
+    public void addToListings(Car car) {
+        cars.add(car);
     }
 }

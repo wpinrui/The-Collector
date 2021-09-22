@@ -23,6 +23,10 @@ public class Car {
         this.value = value;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     /**
      * Returns the string representation of a car object.
      *

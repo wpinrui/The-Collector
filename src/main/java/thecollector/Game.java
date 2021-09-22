@@ -2,6 +2,7 @@ package thecollector;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
@@ -12,7 +13,7 @@ import java.util.TreeMap;
  */
 public class Game implements Serializable {
     public static final int STARTING_MONEY = 10000_00;
-    public static final Garage STARTING_GARAGE = new Garage("Default Garage", new TreeMap<>());
+    public static final Garage STARTING_GARAGE = new Garage("Default Garage", new ArrayList<>());
     public static final Dealer STARTING_DEALER = new Dealer("Good Cars Dealer", 3);
     private final Player player;
     private final Garage garage;
@@ -38,12 +39,13 @@ public class Game implements Serializable {
     }
 
     /**
-     * Move the time forward by a specified number of months.
+     * Move the time forward by a specified number of months. A new list of cars is generated for the dealer.
      *
      * @param months The number of months to move forward.
      */
     public void advanceTime(int months) {
         monthsPassed += months;
+        dealer.generateCarListings(dealer.getNumberOfCars());
     }
 
     /**
@@ -62,6 +64,19 @@ public class Game implements Serializable {
      */
     public Dealer getDealer() {
         return dealer;
+    }
+
+    /**
+     * Retrieves the dealer object associated with the game.
+     *
+     * @return Dealer object
+     */
+    public Garage getGarage() {
+        return garage;
+    }
+
+    public int getMonth() {
+        return monthsPassed;
     }
 
     /**

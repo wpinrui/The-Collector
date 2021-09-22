@@ -12,6 +12,13 @@ public class Ui {
     public static final String ARGS_VIEW = "View command expected an integer car index.";
     public static final String ARGS_BUY = "Buy command expected an integer listing number.";
     public static final String ARGS_SELL = "Sell command expected an integer car index.";
+    public static String alreadyInShopMessage = "You are already at the car dealer.";
+    public static String movedToShopMessage = "You are now at the car dealer.";
+    public static String alreadyInGarageMessage = "You are already at the garage.";
+    public static String movedToGarageMessage = "You are now in your garage.";
+    public static String mustBeInDealerMessage = "You need to visit the car dealer to buy a car.";
+    public static String insufficientFundsMessage = "You do not have enough money to buy this car.";
+    public static String mustBeInGarageMessage = "You need to be in your garage to sell a car.";
 
     /**
      * Shows a message to the player.
@@ -42,5 +49,13 @@ public class Ui {
 
     public static Object formatCarsListString(Location location) {
         return String.format("%s\nCars: \n", location.getName());
+    }
+
+    public static String formatMonthMessage(int month) {
+        return String.format("Months Passed: %d", month + 1);
+    }
+
+    public static String formatCarBoughtMessage(Car car) {
+        return String.format("You have bought a new car: \n%s.", car.toString());
     }
 }

@@ -1,12 +1,12 @@
 package thecollector;
 
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 public class Location {
     protected String name;
-    protected TreeMap<Integer, Car> cars;
+    protected ArrayList<Car> cars;
 
-    public Location(String name, TreeMap<Integer, Car> cars) {
+    public Location(String name, ArrayList<Car> cars) {
         this.name = name;
         this.cars = cars;
     }
@@ -23,5 +23,9 @@ public class Location {
             output.append("\n");
         }
         return String.format("%s:\n%s", Ui.formatCarsListString(this), output);
+    }
+
+    public ArrayList<Car> getCars() {
+        return cars;
     }
 }

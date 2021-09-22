@@ -1,7 +1,7 @@
 package thecollector;
 
 import java.io.Serializable;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 /**
  * This class represents a garage, which has a name and consists of cars owned by the player.
@@ -16,7 +16,7 @@ public class Garage extends Location implements Serializable {
      * @param name The name of the garage
      * @param cars A TreeMap of cars owned by the player
      */
-    public Garage(String name, TreeMap<Integer, Car> cars) {
+    public Garage(String name, ArrayList<Car> cars) {
         super(name, cars);
     }
 
@@ -25,7 +25,7 @@ public class Garage extends Location implements Serializable {
      * @param car Car to be added
      */
     public void addCar(Car car) {
-        cars.put(cars.size(), car);
+        cars.add(car);
     }
 
     /**
