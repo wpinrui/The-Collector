@@ -47,6 +47,10 @@ public class Ui {
         return String.format("Current balance: %s", Utilities.formatMoney(money));
     }
 
+    public static String formatLocationMessage(Location location) {
+        return String.format("Current location: %s", location.getName());
+    }
+
     public static Object formatCarsListString(Location location) {
         return String.format("%s\nCars: \n", location.getName());
     }
@@ -56,6 +60,25 @@ public class Ui {
     }
 
     public static String formatCarBoughtMessage(Car car) {
-        return String.format("You have bought a new car: \n%s.", car.toString());
+        return String.format("You have bought a car: \n%s.", car.toString());
+    }
+
+    public static String formatCarSoldMessage(Car car) {
+        return String.format("You have sold your car: \n%s.", car.toString());
+    }
+
+    public static String formatSummary(Game game) {
+        String divider = "==================================================";
+        return String.format("%s\n%s\n%s\n%s\n%s\n",
+                divider,
+                formatMonthMessage(game.getMonth()),
+                formatLocationMessage(game.getPlayer().getLocation()),
+                formatCashMessage(game.getPlayer().getMoney()),
+                divider);
+    }
+
+    public static String promptPlayerInput() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
     }
 }

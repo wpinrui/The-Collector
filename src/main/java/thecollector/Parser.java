@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Parser {
     private final String instruction;
     private Integer parameter;
-    private Game game;
+    private final Game game;
 
     public Parser(String input, Game game) {
         this.game = game;
@@ -28,7 +28,7 @@ public class Parser {
         if (parameter == null) {
             return new Command(instruction, game);
         }
-        return new Command(instruction, parameter);
+        return new Command(instruction, parameter, game);
     }
 
     public String getInstruction() {

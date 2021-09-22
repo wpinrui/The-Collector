@@ -1,28 +1,33 @@
 package thecollector;
 
+import java.io.IOException;
+
 public class Logic {
     public static void handleCash(Game game) {
         int money = game.getPlayer().getMoney();
         Ui.display(Ui.formatCashMessage(money));
     }
-    public static void handleShop(Game game) {
+    public static void handleShop(Game game) throws IOException {
         if (game.getPlayer().getLocation() instanceof Dealer) {
             Ui.display(Ui.alreadyInShopMessage);
         }
         game.getPlayer().setLocation(game.getDealer());
         Ui.display(Ui.movedToShopMessage);
+        Storage.writeSave(game);
     }
-    public static void handleGarage(Game game) {
+    public static void handleGarage(Game game) throws IOException {
         if (game.getPlayer().getLocation() instanceof Garage) {
             Ui.display(Ui.alreadyInGarageMessage);
         }
         game.getPlayer().setLocation(game.getGarage());
         Ui.display(Ui.movedToGarageMessage);
+        Storage.writeSave(game);
     }
 
-    public static void handleAdvance(Game game) {
+    public static void handleAdvance(Game game) throws IOException {
         game.advanceTime();
-        Ui.display(Ui.formatMonthMessage(game.getMonth()));
+        Ui.display(Ui.formatSummary(game));
+        Storage.writeSave(game);
     }
 
     public static void handleView(int index, Game game) {
@@ -30,7 +35,7 @@ public class Logic {
         Ui.display(car.toString());
     }
 
-    public static void handleBuy(int index, Game game) {
+    public static void handleBuy(int index, Game game) throws IOException {
         if (game.getPlayer().getLocation() instanceof Garage) {
             Ui.display(Ui.mustBeInDealerMessage);
         }
@@ -43,12 +48,16 @@ public class Logic {
         game.getGarage().addCar(car);
         game.getPlayer().addMoney(car.getValue() * -1);
         Ui.display(Ui.formatCarBoughtMessage(car));
+        Storage.writeSave(game);
     }
 
-    public static void handleSell(int index, Game game) {
+    public static void handleSell(int index, Game game) throws IOException {
         if (game.getPlayer().getLocation() instanceof Dealer) {
             Ui.display(Ui.mustBeInGarageMessage);
         }
-        Car car = game.getGarage().getCars().get(index);
+        Car car = game.getGarage().removeCar(index);
+        game.getPlayer().addMoney(car.getValue());
+        Ui.display(Ui.formatCarSoldMessage(car));
+        Storage.writeSave(game);
     }
 }

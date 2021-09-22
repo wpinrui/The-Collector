@@ -81,11 +81,14 @@ public class Game implements Serializable {
 
     /**
      * Begins the execution of the game.
-     *
-     * @throws IOException when unable to write to the save file
      */
     public void play() throws IOException {
         System.out.printf("Hi %s!", player.getName());
-        Storage.writeSave(this);
+        Ui.display(Ui.formatSummary(this));
+        while (true) {
+            String inputString = Ui.promptPlayerInput();
+            Parser parser = new Parser(inputString, this);
+            parser.parseInput();
+        }
     }
 }
