@@ -1,18 +1,16 @@
 package thecollector;
 
 import java.io.Serializable;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 /**
  * This class encapsulates a car dealer's characteristics and behaviour.
+ * It is a subclass of Location.
  *
  * @author Ivan Wong
  */
-public class Dealer implements Serializable {
-    private TreeMap<Integer, Car> listings;
-    private final String name;
-    private final int numberOfCars;
-
+public class Dealer extends Location implements Serializable {
+    private int numberOfCars;
     /**
      * Constructor for a car dealer.
      *
@@ -20,18 +18,17 @@ public class Dealer implements Serializable {
      * @param numberOfCars Number of cars available from the dealer each month
      */
     public Dealer(String name, int numberOfCars) {
-        this.name = name;
+        super(name, new ArrayList<>());
         this.numberOfCars = numberOfCars;
-        generateCarListings();
+        generateCarListings(numberOfCars);
     }
 
-    /**
-     * Retrieves the name of the dealer.
-     *
-     * @return The dealer name
-     */
-    public String getName() {
-        return this.name;
+    public int getNumberOfCars() {
+        return numberOfCars;
+    }
+
+    public void setNumberOfCars(int numberOfCars) {
+        this.numberOfCars = numberOfCars;
     }
 
     /**
@@ -39,17 +36,17 @@ public class Dealer implements Serializable {
      *
      * @return listings
      */
-    public TreeMap<Integer, Car> getCarListings() {
-        return listings;
+    public ArrayList<Car> getCarListings() {
+        return cars;
     }
 
     /**
      * Generates a new list of cars to be sold.
      */
-    public void generateCarListings() {
-        listings = new TreeMap<>();
-        for (int i = 0; i < this.numberOfCars; i++) {
-            listings.put(i, generateSingleListing());
+    public void generateCarListings(int numberOfCars) {
+        cars = new ArrayList<>();
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(generateSingleListing());
         }
     }
 
@@ -67,23 +64,13 @@ public class Dealer implements Serializable {
      * Remove a car from the listings, perhaps because it has been sold.
      * Returns the car.
      *
-     * @param treeKey Index of the car to remove
+     * @param index Index of the car to remove
      */
-    public Car removeFromListings(int treeKey) {
-        return listings.remove(treeKey);
+    public Car removeFromListings(int index) {
+        return cars.remove(index);
     }
 
-    /**
-     * Return the name of the car dealer.
-     * @return Name of dealer
-     */
-    @Override
-    public String toString() {
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < listings.size(); i++) {
-            output.append(listings.get(i));
-            output.append("\n");
-        }
-        return String.format("%s:\n%s", Ui.formatDealerListingsString(this), output);
+    public void addToListings(Car car) {
+        cars.add(car);
     }
 }
