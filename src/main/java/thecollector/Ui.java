@@ -12,6 +12,8 @@ public class Ui {
     public static final String ARGS_VIEW = "View command expected an integer car index.";
     public static final String ARGS_BUY = "Buy command expected an integer listing number.";
     public static final String ARGS_SELL = "Sell command expected an integer car index.";
+    public static final String ARGS_VIEW_INDEX_OOB = "You have entered an index for a car that doesn't exist.";
+    public static final String ARGS_UNRECOGNISED = "Sorry, the command you entered is not recognised.";
     public static String alreadyInShopMessage = "You are already at the car dealer.";
     public static String movedToShopMessage = "You are now at the car dealer.";
     public static String alreadyInGarageMessage = "You are already at the garage.";
@@ -19,6 +21,7 @@ public class Ui {
     public static String mustBeInDealerMessage = "You need to visit the car dealer to buy a car.";
     public static String insufficientFundsMessage = "You do not have enough money to buy this car.";
     public static String mustBeInGarageMessage = "You need to be in your garage to sell a car.";
+    private static String promptPlayerInputMessage = "What would you like to do?";
 
     /**
      * Shows a message to the player.
@@ -28,13 +31,17 @@ public class Ui {
         System.out.println(message);
     }
 
+    public static void displayPrompt(String message) {
+        System.out.print(message + "\n> ");
+    }
+
     /**
      * Waits for the user to input their name into the console, then returns it.
      *
      * @return The name that the player has entered
      */
     public static String promptPlayerName() {
-        System.out.println("Welcome to The Collector. What is your name?");
+        displayPrompt("Welcome to The Collector. What is your name?");
         Scanner sc = new Scanner(System.in);
         try {
             return sc.nextLine();
@@ -78,6 +85,7 @@ public class Ui {
     }
 
     public static String promptPlayerInput() {
+        displayPrompt(Ui.promptPlayerInputMessage);
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }

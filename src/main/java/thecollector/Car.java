@@ -1,11 +1,13 @@
 package thecollector;
 
+import java.io.Serializable;
+
 /**
  * This class represents a car object, which players can buy and sell.
  *
  * @author Ivan Wong
  */
-public class Car {
+public class Car implements Serializable {
     private String brand;
     private String modelName;
     private int value;

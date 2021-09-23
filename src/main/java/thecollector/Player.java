@@ -17,11 +17,11 @@ public class Player implements Serializable {
      *
      * @param name The name of the player
      * @param money The amount of money that the player has
-     * @param garage The garage that the player owns
      */
-    public Player(String name, int money) {
+    public Player(String name, int money, Location location) {
         this.name = name;
         this.money = money;
+        this.location = location;
     }
 
     /**

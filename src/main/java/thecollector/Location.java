@@ -1,8 +1,9 @@
 package thecollector;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Location {
+public class Location implements Serializable {
     protected String name;
     protected ArrayList<Car> cars;
 

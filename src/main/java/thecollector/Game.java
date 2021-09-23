@@ -3,7 +3,6 @@ package thecollector;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 /**
  * This class contains all the data needed to describe the state of the game. An object of this class is written
@@ -12,7 +11,7 @@ import java.util.TreeMap;
  * @author Ivan Wong
  */
 public class Game implements Serializable {
-    public static final int STARTING_MONEY = 10000_00;
+    public static final int STARTING_MONEY = 30000_00;
     public static final Garage STARTING_GARAGE = new Garage("Default Garage", new ArrayList<>());
     public static final Dealer STARTING_DEALER = new Dealer("Good Cars Dealer", 3);
     private final Player player;
@@ -26,7 +25,7 @@ public class Game implements Serializable {
      * assumes a new game is being created.
      */
     public Game() {
-        this.player = new Player(Ui.promptPlayerName(), STARTING_MONEY);
+        this.player = new Player(Ui.promptPlayerName(), STARTING_MONEY, STARTING_GARAGE);
         this.dealer = STARTING_DEALER;
         this.garage = STARTING_GARAGE;
     }
@@ -83,12 +82,20 @@ public class Game implements Serializable {
      * Begins the execution of the game.
      */
     public void play() throws IOException {
-        System.out.printf("Hi %s!", player.getName());
         Ui.display(Ui.formatSummary(this));
         while (true) {
             String inputString = Ui.promptPlayerInput();
             Parser parser = new Parser(inputString, this);
-            parser.parseInput();
+            try {
+                parser.parseInput();
+            } catch (IllegalArgumentException e) {
+                Ui.display(e.getMessage());
+            } catch (IndexOutOfBoundsException e) {
+                Ui.display(Ui.ARGS_VIEW_INDEX_OOB);
+            } catch (Exception e) {
+                Ui.display("This should not happen!!!");
+                Ui.display(e.toString());
+            }
         }
     }
 }
