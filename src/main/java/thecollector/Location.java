@@ -44,7 +44,10 @@ public class Location implements Serializable {
             output.append(cars.get(i));
             output.append("\n");
         }
-        return String.format("%s:\n%s", Ui.formatCarsListString(this), output);
+        if (output.toString().equals("")) {
+            output.append("(None)\n");
+        }
+        return String.format("%s%s", Ui.formatCarsListString(this), output);
     }
 
     /**

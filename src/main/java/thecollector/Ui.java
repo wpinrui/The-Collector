@@ -22,6 +22,7 @@ public class Ui {
     public static final String INSUFFICIENT_FUNDS_MESSAGE = "You do not have enough money to buy this car.";
     public static final String MUST_BE_IN_GARAGE_MESSAGE = "You need to be in your garage to sell a car.";
     public static final String PROMPT_PLAYER_INPUT_MESSAGE = "What would you like to do?";
+    public static final String DIVIDER = "==================================================";
 
     /**
      * Shows a message to the player.
@@ -77,7 +78,7 @@ public class Ui {
      * @return A formatted string to be shown before the list of cars at the location
      */
     public static Object formatCarsListString(Location location) {
-        return String.format("%s\nCars: \n", location.getName());
+        return String.format("%s\nCars: \n", DIVIDER);
     }
 
     /**
@@ -117,13 +118,12 @@ public class Ui {
      * @return A summary of the game state
      */
     public static String formatSummary(Game game) {
-        String divider = "==================================================";
         return String.format("%s\n%s\n%s\n%s\n%s\n",
-                divider,
+                DIVIDER,
                 formatMonthMessage(game.getMonth()),
                 formatLocationMessage(game.getPlayer().getLocation()),
                 formatCashMessage(game.getPlayer().getMoney()),
-                divider);
+                DIVIDER);
     }
 
     /**

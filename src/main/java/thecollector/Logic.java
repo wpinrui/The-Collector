@@ -28,8 +28,10 @@ public class Logic {
             Ui.display(Ui.ALREADY_IN_SHOP_MESSAGE);
             return;
         }
-        game.getPlayer().setLocation(game.getDealer());
+        Dealer dealer = game.getDealer();
+        game.getPlayer().setLocation(dealer);
         Ui.display(Ui.MOVED_TO_SHOP_MESSAGE);
+        Ui.display(dealer.toString());
         Storage.writeSave(game);
 
     }
@@ -44,8 +46,10 @@ public class Logic {
             Ui.display(Ui.ALREADY_IN_GARAGE_MESSAGE);
             return;
         }
-        game.getPlayer().setLocation(game.getGarage());
+        Garage garage = game.getGarage();
+        game.getPlayer().setLocation(garage);
         Ui.display(Ui.MOVED_TO_GARAGE_MESSAGE);
+        Ui.display(garage.toString());
         Storage.writeSave(game);
 
     }
