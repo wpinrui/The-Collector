@@ -10,6 +10,13 @@ public class Parser {
     private Integer parameter;
     private final Game game;
 
+    /**
+     * Constructor for a parser object. It takes in the raw user input and tries to split it up into an instruction
+     * and an integer parameter, if any.
+     *
+     * @param input The unprocessed user input
+     * @param game The state of the game
+     */
     public Parser(String input, Game game) {
         this.game = game;
         String[] strings = input.split(" ");
@@ -24,11 +31,17 @@ public class Parser {
         }
     }
 
-    public Command parseInput() throws IOException {
+    /**
+     * Calls the Command constructor of the appropriate method signature.
+     *
+     * @throws IOException If the game cannot be saved
+     */
+    public void runParsedInstruction() throws IOException {
         if (parameter == null) {
-            return new Command(instruction, game);
+            new Command(instruction, game);
+            return;
         }
-        return new Command(instruction, parameter, game);
+        new Command(instruction, parameter, game);
     }
 
     public String getInstruction() {

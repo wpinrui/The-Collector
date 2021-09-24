@@ -87,7 +87,7 @@ public class Game implements Serializable {
             String inputString = Ui.promptPlayerInput();
             Parser parser = new Parser(inputString, this);
             try {
-                parser.parseInput();
+                parser.runParsedInstruction();
             } catch (IllegalArgumentException e) {
                 Ui.display(e.getMessage());
             } catch (IndexOutOfBoundsException e) {
