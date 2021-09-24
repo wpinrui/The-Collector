@@ -2,10 +2,10 @@ package thecollector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import org.junit.jupiter.api.Test;
 
 import java.util.TreeMap;
-import java.util.function.Supplier;
+
+import org.junit.jupiter.api.Test;
 
 public class DealerTest {
     @Test
@@ -35,9 +35,9 @@ public class DealerTest {
     public void toStringTest() {
         Dealer d = new Dealer("Dealer ABC", 3);
         assertEquals(d.toString(),
-                "Dealer ABC's listings:" +
-                        "\nNissom Moony (Est. value: $20,000.00)" +
-                        "\nNissom Moony (Est. value: $20,000.00)" +
-                        "\nNissom Moony (Est. value: $20,000.00)\n");
+                "Dealer ABC's listings:"
+                        + "\nNissom Moony (Est. value: $20,000.00)"
+                        + "\nNissom Moony (Est. value: $20,000.00)"
+                        + "\nNissom Moony (Est. value: $20,000.00)\n");
     }
 }
