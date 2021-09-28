@@ -4,7 +4,7 @@ The Collector is a desktop command-line interface (CLI) game in which players ge
 
 ## Quick start
 
-1. Ensure you have Java 11 or above installed in your computer. 
+1. Ensure you have **Java 11 or above** installed in your computer. 
 2. Download the latest JAR file from the releases, if any.
 3. Copy the file to the folder you want to use as the home folder for the game. 
 4. Double-click the file to start the game. 
